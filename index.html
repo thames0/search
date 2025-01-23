@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Google Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+    }
+    input, button {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    input {
+      width: 300px;
+      margin-bottom: 15px;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Custom Google Search</h1>
+
+  <!-- Search Form for DD -->
+  <h2>DD</h2>
+  <form id="searchForm1">
+    <input type="text" id="nameInput1" placeholder="Enter a name" required />
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- Search Form for DD2 -->
+  <h2>DD2</h2>
+  <form id="searchForm2">
+    <input type="text" id="nameInput2" placeholder="Enter a name" required />
+    <button type="submit">Search</button>
+  </form>
+
+  <script>
+    // Handle the first search form (DD)
+    document.getElementById("searchForm1").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      const name1 = document.getElementById("nameInput1").value.trim();
+      if (name1) {
+        // Predefined query for DD
+        const query1 = `(arrest OR bankruptcy OR conviction OR criminal OR fraud OR lawsuit OR money+launder OR Ponzi OR violation "${name1}")`;
+        const googleSearchURL1 = `https://www.google.com/search?q=${encodeURIComponent(query1)}`;
+
+        // Open the Google search in a new tab
+        window.open(googleSearchURL1, "_blank");
+      } else {
+        alert("Please enter a name.");
+      }
+    });
+
+    // Handle the second search form (DD2)
+    document.getElementById("searchForm2").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      const name2 = document.getElementById("nameInput2").value.trim();
+      if (name2) {
+        // Predefined query for DD2
+        const query2 = `(Army OR Conflict OR Invasion OR Fund "${name2}")`;
+        const googleSearchURL2 = `https://www.google.com/search?q=${encodeURIComponent(query2)}`;
+
+        // Open the Google search in a new tab
+        window.open(googleSearchURL2, "_blank");
+      } else {
+        alert("Please enter a name.");
+      }
+    });
+  </script>
+</body>
+</html>
